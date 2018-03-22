@@ -99,8 +99,8 @@ func TestGetSate(t *testing.T) {
 		t.Errorf("State not valid")
 	}
 
-	for count, uuid := range uuids {
-		fmt.Println(count, " ", uuid, "	STATE:", states[count], "	SELECTION:", selection)
+	for count, state := range states {
+		fmt.Println(count, " ", uuids[count], "	STATE:", state, "	SELECTION:", "")
 	}
 
 }
