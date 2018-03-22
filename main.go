@@ -28,6 +28,34 @@ func init() {
 }
 
 func main() {
+	firstPage, _ := getFirstHtml()
+	if len(firstPage) == 0 {
+		panic("Page not valid")
+	}
+
+	selection, _ := getSelection(firstPage)
+	if len(selection) == 0 {
+		panic("Selection not valid")
+	}
+
+	xmlTotal, _ := getXML(selection)
+	if len(xmlTotal) == 0 {
+		panic("XML not valid")
+	}
+
+	uuids, _ := GetUUID(xmlTotal)
+	if len(uuids) == 0 {
+		panic("UUID not valid")
+	}
+
+	states, _ := GetState(xmlTotal)
+	if len(states) != len(uuids) {
+		panic("State not valid")
+	}
+
+	for count, uuid := range uuids {
+		fmt.Println(count, " ", uuid, "	STATE:", states[count], "	SELECTION:", selection)
+	}
 
 }
 
@@ -53,7 +81,7 @@ func getFirstHtml() (string, error) {
 
 func getSelection(firstPageBody string) (string, error) {
 	re := regexp.MustCompile("<c:selection>\\d{10}")
-	fmt.Println(re.FindString(firstPageBody))
+	//fmt.Println(re.FindString(firstPageBody))
 	selection := re.FindString(firstPageBody)
 	selection = strings.Replace(selection, "<c:selection>", "", -1)
 	return selection, nil
