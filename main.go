@@ -43,17 +43,17 @@ func main() {
 		fmt.Println("State not valid, finded:", len(states), "  expected (uuids):", len(uuids))
 	}
 
+	for count, uuid := range uuids {
+		fmt.Println(count, " ", uuid, "	STATE:", states[count], "	SELECTION:", selection, "\r")
+	}
+
 	// for count, uuid := range uuids {
-	// 	fmt.Println(count, " ", uuid, "	STATE:", states[count], "	SELECTION:", selection, "\r")
+	// 	fmt.Println(count, " ", uuid, "	SELECTION:", selection, "\n")
 	// }
 
-	for count, uuid := range uuids {
-		fmt.Println(count, " ", uuid, "	SELECTION:", selection, "\n")
-	}
-
-	for count, state := range states {
-		fmt.Println(count, "	STATE:", state, "	SELECTION:", selection)
-	}
+	// for count, state := range states {
+	// 	fmt.Println(count, "	STATE:", state, "	SELECTION:", selection)
+	// }
 
 }
 
