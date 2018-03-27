@@ -16,14 +16,16 @@ func main() {
 	args := os.Args
 
 	if len(args) != 5 {
-		panic(`USE kofaxmonitoring --host myhost.com --pages 50`)
+		fmt.Println(`USE kofaxmonitoring --host myhost.com --pages 50`)
+		os.Exit(0)
 	}
 
 	host := args[2]
 	pages, err := strconv.Atoi(args[4])
 
 	if err != nil {
-		panic(`USE kofaxmonitoring --host myhost.com --pages 50`)
+		fmt.Println(`USE kofaxmonitoring --host myhost.com --pages 50`)
+		os.Exit(0)
 	}
 
 	kd, _ := getKofaxDocuments(pages, host)
